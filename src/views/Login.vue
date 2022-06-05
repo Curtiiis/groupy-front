@@ -159,12 +159,12 @@ export default {
           utils.redirectDelay('/', 500);
         })
         .catch((error) => {
-          if (error.response.status == 400) {
-            this.errorMessage = 'Pseudo/email invalide';
-          }
-          if (error.response.status === 401) {
-            return this.errorAnimation();
-          }
+          // if (error.response.status == 400) {
+          //   this.errorMessage = 'Pseudo/email invalide';
+          // }
+          // if (error.response.status === 401) {
+          //   return this.errorAnimation();
+          // }
           console.log(error);
         });
     },
