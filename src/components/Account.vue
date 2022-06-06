@@ -149,7 +149,6 @@ export default {
         .get(`user/followers/${this.userId}`, this.setAuthorization())
         .then((response) => {
           utils.commitUserFollowers(response.data);
-          response.status(200).json(response.data);
         })
         .catch((error) => console.log(error));
     },
