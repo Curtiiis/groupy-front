@@ -59,9 +59,9 @@
                 />
               </div>
             </transition>
-            <div class="more">
+            <!-- <div class="more">
               <button class="more-btn" @click="getSuggestions" name="plus">Voir plus</button>
-            </div>
+            </div> -->
           </div>
 
           <!-- CREATE MODALE -->
@@ -247,7 +247,7 @@ export default {
       utils.showCreateModale(false);
       utils.showAccount(false);
       http
-        .get(`posts/post/${item.postId}`, this.setAuthorization())
+        .get(`posts/${item.postId}`, this.setAuthorization())
         .then((response) => {
           utils.commitPostData(response.data);
           utils.showLoader(false, 300);
