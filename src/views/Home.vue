@@ -225,7 +225,8 @@ export default {
     getAllPosts() {
       this.$store.commit('resetModals');
       http
-        .get(`posts/${this.numberPosts}`, this.setAuthorization())
+        // .get(`posts/${this.numberPosts}`, this.setAuthorization())
+        .get(`posts`, this.setAuthorization())
         .then((response) => {
           console.log('Posts', response.data);
           if (response.data.length == 0) {
