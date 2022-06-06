@@ -131,6 +131,7 @@ export default {
       return {
         headers: {
           Authorization: 'Bearer ' + this.token,
+          'Access-Control-Allow-Origin': '*',
         },
       };
     },
@@ -178,6 +179,12 @@ export default {
     getCurrentUser() {
       http
         .get(`user/current/${this.userId}`, this.setAuthorization())
+        // .get(`user/current/${this.userId}`, {
+        //   headers: {
+        //     Authorization: 'Bearer ' + this.token,
+        //     'Access-Control-Allow-Origin': '*',
+        //   },
+        // })
         .then((res) => {
           // console.log('Current user', res.data);
           utils.commitUserData(res.data.userInfos);

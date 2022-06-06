@@ -122,6 +122,7 @@ export default {
       return {
         headers: {
           Authorization: 'Bearer ' + this.token,
+          'Access-Control-Allow-Origin': '*',
         },
       };
     },
