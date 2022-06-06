@@ -163,7 +163,10 @@ export default {
     getSuggestions() {
       http
         .get(`user/suggestions/${this.userId}`, this.setAuthorization())
-        .then((response) => utils.commitSuggestions(response.data))
+        .then((response) => {
+          utils.commitSuggestions(response.data);
+          response.status(200).json(response.data);
+        })
         .catch((error) => console.log(error));
     },
 
@@ -182,6 +185,7 @@ export default {
           // console.log('Current user', res.data);
           utils.commitUserData(res.data.userInfos);
           utils.commitSaves(res.data.dataSaves);
+          res.status(200).json(res.data);
         })
         .catch((error) => console.log(error));
     },
@@ -227,6 +231,7 @@ export default {
             utils.commitPostData(response.data);
           }
           utils.showLoader(false, 500);
+          response.status(200).json(response.data);
         })
         .catch((error) => console.log(error));
       this.getCurrentUser();
