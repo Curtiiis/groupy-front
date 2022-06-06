@@ -41,7 +41,7 @@
                 @get-all-posts="getAllPosts"
                 @get-user-infos="getCurrentUser"
               />
-              <button @click="getFiveMore">Voir plus</button>
+              <!-- <button @click="getFiveMore">Voir plus</button> -->
             </div>
           </transition>
 
@@ -59,9 +59,9 @@
                 />
               </div>
             </transition>
-            <!-- <div class="more">
+            <div class="more">
               <button class="more-btn" @click="getSuggestions" name="plus">Voir plus</button>
-            </div> -->
+            </div>
           </div>
 
           <!-- CREATE MODALE -->
