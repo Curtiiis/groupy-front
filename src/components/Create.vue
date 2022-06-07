@@ -96,12 +96,19 @@ export default {
         title: '',
         text: '',
       },
-      headers: {
-        Authorization: 'Bearer ' + this.token,
-      },
     };
   },
   methods: {
+    setAuthorization() {
+      return {
+        headers: {
+          Authorization: 'Bearer ' + this.token,
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization',
+          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+        },
+      };
+    },
     closeCreateModale() {
       utils.showUpdateModale(false);
       this.resetCreateState();
@@ -165,11 +172,7 @@ export default {
       };
 
       http
-        .put(`posts/${this.newPost.postId}`, form, {
-          headers: {
-            Authorization: 'Bearer ' + this.token,
-          },
-        })
+        .put(`posts/${this.newPost.postId}`, form, this.setAuthorization())
         .then(() => {
           this.resetCreateState();
           EventBus.$emit('getAllPosts');
